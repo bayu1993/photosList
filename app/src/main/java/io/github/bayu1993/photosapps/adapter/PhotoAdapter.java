@@ -36,8 +36,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull PhotoAdapter.ViewHolder holder, int position) {
-        holder.tvTitle.setText(photoModelsList.get(position).getTitle());
-        Picasso.get().load(photoModelsList.get(position).getUrl()).into(holder.imgPhoto);
+        holder.bind(photoModelsList.get(position));
     }
 
     @Override
@@ -53,6 +52,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
             imgPhoto = itemView.findViewById(R.id.img_photo);
+        }
+
+        void bind(PhotoModel photoModel) {
+            tvTitle.setText(photoModel.getTitle());
+            Picasso.get().load(photoModel.getUrl()).into(imgPhoto);
         }
     }
 }

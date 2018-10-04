@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<PhotoModel> photoModels;
     private CompositeDisposable compositeDisposable;
 
-    public static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         RestApi restApi = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BuildConfig.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
